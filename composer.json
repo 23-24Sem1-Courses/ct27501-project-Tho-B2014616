@@ -1,0 +1,15 @@
+{
+    "name": "asus/ct27501-project-tho-b2014616",
+    "autoload": {
+        "psr-4": {
+            "APP\\": "./src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Tu Ngoc Xuan Tho",
+            "email": "thob2014616@student.ctu.edu.vn"
+        }
+    ],
+    "require": {}
+}
