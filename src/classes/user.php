@@ -103,15 +103,12 @@ class user{
     
         $statement = $this->connection->prepare($sql);
     
-        // Thực hiện cập nhật với mật khẩu mới (nếu có)
-        $hashedPassword = !empty($user_pass) ? password_hash($user_pass, PASSWORD_DEFAULT) : null;
-    
         // Thực thi câu lệnh SQL với các tham số đã được cung cấp
         $result = $statement->execute([
             'ID' => $ID,
             'username' => $username,
             'user_email' => $user_email,
-            'user_pass' => $hashedPassword
+            'user_pass' => $user_pass
         ]);
     
         // Kiểm tra xem cập nhật có thành công không
@@ -124,9 +121,35 @@ class user{
         $statement = $this->connection->prepare($sql);
         $statement->execute();
     
-        $users = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $users = [];
+        while($row = $statement->fetch()){
+            $user = new user($this->connection);
+            $user->ID = $row['id'];
+            $user->user_email = $row['user_email'];
+            $user->username = $row['user_name'];
+            $user->role = $row['role'];
+            $users[] = $user;
+
+        };
     
         return $users;
+    }
+    public function user_theo_ID(int $ID_user): user {
+        $sql = 'SELECT * FROM user WHERE id = :ID_user';
+        $statement = $this->connection->prepare($sql);
+        $statement->execute([
+            'ID_user' => $ID_user
+        ]);
+    
+        $row = $statement->fetch();
+        $user = new user($this->connection);
+        $user->ID = $row['id'];
+        $user->user_email = $row['user_email'];
+        $user->username = $row['user_name'];
+        $user->role = $row['role'];
+
+    
+        return $user;
     }
 
     public function delete($user_id): bool {
