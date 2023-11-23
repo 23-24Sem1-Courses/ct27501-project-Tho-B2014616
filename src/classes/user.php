@@ -181,6 +181,25 @@ class user
         return $user;
     }
 
+    public function user_theo_name(string $user_name): user
+    {
+        $sql = 'SELECT * FROM user WHERE user_name = :user_name';
+        $statement = $this->connection->prepare($sql);
+        $statement->execute([
+            'user_name' => $user_name
+        ]);
+
+        $row = $statement->fetch();
+        $user = new user($this->connection);
+        $user->ID = $row['id'];
+        $user->user_email = $row['user_email'];
+        $user->username = $row['user_name'];
+        $user->role = $row['role'];
+
+
+        return $user;
+    }
+
     public function delete($user_id): bool
     {
         $sql = 'DELETE FROM user WHERE id = :user_id';
