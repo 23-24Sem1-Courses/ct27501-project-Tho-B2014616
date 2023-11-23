@@ -45,19 +45,25 @@
                                         $linkdel ="index.php?pg=delcart&ind=".$i;
                                         echo '<tr class="cart__table-thead-tr">
                                                 <td class="cart__table-thumbnail"><a href="#"><img
-                                                    src="../assets/img/img_product/'.$img.'.jpg" alt="Product"></a>
+                                                    src="/public/assets/img/img_product/'.htmlspecialchars($img).'.jpg" alt="Product"></a>
                                                 </td>
-                                                <td class="cart__table-title"><a href="#">'.$name.'</a></td>
-                                                <td class="cart__table-price"><span>'.number_format($price,0,",",".").'đ</span></td>
+                                                <td class="cart__table-title"><a href="#">'.htmlspecialchars($name).'</a></td>
+                                                <td class="cart__table-price"><span>'.htmlspecialchars(number_format($price,0,",",".")).'đ</span></td>
                                                 <td class="cart__table-quantity">
                                                     <div class="cart__table-qty">
                                                         <button class="minus-btn qtybtn" onclick="decreaseQuantity(this)">-</button>
-                                                        <input class="amount-input quantity" type="number" value="'.$soluong.'" min="1">
+                                                        <input class="amount-input quantity" type="number" value="'.htmlspecialchars($soluong).'" min="1" readonly>
                                                         <button class="plus-btn qtybtn" onclick="increaseQuantity(this)">+</button>
                                                     </div>
                                                 </td>
-                                                <td class="cart__table-subtotal"><span>'.number_format($tt,0,",",".").'đ</span></td>
-                                                <td class="cart__table-remove"><a href="'.$linkdel.'"><i class="fa-regular fa-trash-can"></i></a>
+                                                <td class="cart__table-subtotal"><span>'.htmlspecialchars(number_format($tt,0,",",".")).'đ</span></td>
+                                                <td class="cart__table-remove">
+                                                    <form action="" method="post">
+                                                        <input type="hidden" name="viewcart">
+                                                        <input type="hidden" name="del_cart">
+                                                        <input type="hidden" name="stt" value="'.$i.'">
+                                                        <button type="submit" class="cart__table-remove-btn"><i class="fa-regular fa-trash-can"></i></button>
+                                                    </form>
                                                 </td>
                                             </tr>';
                                             $i++;                              
@@ -69,7 +75,6 @@
                                 
 
                             ?>
-
                         </tbody>
                         <tfoot>
                             <tr class="cart__footer">
@@ -81,7 +86,10 @@
                                 </td>
                                 <td class="text-center cart__footer-checkout">
                                     <div class="cart__footer-summary">
-                                        <a class="cart__checkout-btn" href="#">Checkout</a>
+                                        <form action="" method="post">
+                                            <button type="submit" class="cart__checkout-btn btn" name="pay">Thanh
+                                                toán</button>
+                                        </form>
                                     </div>
                                 </td>
                             </tr>
@@ -98,78 +106,4 @@
         <!--Cart section end-->
     </div>
 </div>
-<script>
-    function decreaseQuantity(button) {
-        var input = button.nextElementSibling;
-        var currentValue = parseInt(input.value);
-
-        if (currentValue > 1) {
-            input.value = currentValue - 1;
-            updateCartItem(input);
-        }
-    }
-
-    function increaseQuantity(button) {
-        var input = button.previousElementSibling;
-        var currentValue = parseInt(input.value);
-
-        input.value = currentValue + 1;
-        updateCartItem(input);
-    }
-
-    function updateCartItem(input) {
-        var row = input.closest('.cart__table-thead-tr');
-        var price = parseFloat(row.querySelector('.cart__table-price span').innerText.replace('đ', '').replace('.', '').replace(',', '.'));
-        var quantity = parseInt(input.value);
-
-        var subtotal = price * quantity;
-
-        // Format the subtotal with the desired currency format
-        var formattedSubtotal = formatCurrency(subtotal);
-
-        // Update the subtotal in the table
-        row.querySelector('.cart__table-subtotal span').innerText = formattedSubtotal;
-
-        // Update the total sum
-        updateTotalSum();
-    }
-
-    function updateTotalSum() {
-        var totalSum = 0;
-
-        // Get all subtotals and sum them up
-        var subtotals = document.querySelectorAll('.cart__table-subtotal span');
-        subtotals.forEach(function (subtotal) {
-            totalSum += parseFloat(subtotal.innerText.replace('đ', '').replace('.', '').replace(',', '.'));
-        });
-
-        // Format the total sum with the desired currency format
-        var formattedTotalSum = formatCurrency(totalSum);
-
-        // Update the total sum in the footer
-        document.querySelector('.cart__footer-sum-value h4').innerText = formattedTotalSum;
-    }
-
-    // Function to format currency
-    function formatCurrency(amount) {
-        return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-    }
-
-    document.addEventListener('DOMContentLoaded', function () {
-        // Get all quantity input elements
-        var quantityInputs = document.querySelectorAll('.quantity');
-
-        // Attach event listeners to each quantity input
-        quantityInputs.forEach(function (input) {
-            input.addEventListener('change', function () {
-                updateCartItem(input);
-            });
-        });
-
-        // Update the total sum when the page loads
-        updateTotalSum();
-    });
-</script>
-
-
-<?php include_once "../model/footer.php"?>
+<script src="/../public/assets/js/viewcart.js"></script>

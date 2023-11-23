@@ -69,13 +69,13 @@
             <div class="col l-2-4 m-8 c-12">
                 <h class="footer__heading">Vào cửa hàng trên ứng dụng</h>
                 <div class="footer__download">
-                    <img src="../assets/img/QR_code.png" alt="Download QR" class="footer__download-qr-img">
+                    <img src="../public/assets/img/QR_code.png" alt="Download QR" class="footer__download-qr-img">
                     <div class="footer__download-apps">
                         <a href="" class="footer__download-app-link">
-                            <img src="../assets/img/GooglePlay.png" alt="GooglePlay" class="footer__download-app-img">
+                            <img src="../public/assets/img/GooglePlay.png" alt="GooglePlay" class="footer__download-app-img">
                         </a>
                         <a href="" class="footer__download-app-link">
-                            <img src="../assets/img/Appstore.png" alt="Appstore" class="footer__download-app-img">
+                            <img src="../public/assets/img/Appstore.png" alt="Appstore" class="footer__download-app-img">
                         </a>
                     </div>
                 </div>
@@ -219,6 +219,7 @@
 
 
 <script src="/public/assets/js/main.js"></script>
+<script src="/public/assets/js/viewcart.js"></script>
 </body>
 
 

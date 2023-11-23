@@ -10,22 +10,32 @@
 <html>
 
 <head>
-    <title>NLCS - TN Shop</title>
+    <title>TN Shop</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Thư viện icon Fontawesome -->
-    <link rel="stylesheet" href="../assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
+    <link rel="stylesheet" href="../public/assets/fonts/fontawesome-free-6.4.0-web/css/all.min.css">
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <!-- Reset CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 
     <!-- Css style -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous">
+    </script>
     <link rel="stylesheet" href="../public/assets/css/base.css">
     <link rel="stylesheet" href="../public/assets/css/main.css">
     <link rel="stylesheet" href="../public/assets/css/grid.css">
     <link rel="stylesheet" href="../public/assets/css/responsive.css">
     <link rel="stylesheet" href="../public/assets/css/cart.css">
+    <link rel="icon" href="../public/assets/img/books.png" type="image/x-icon">
 
 
 </head>
@@ -42,14 +52,14 @@
                             Vào TN-Shop từ ứng dụng
                             <!--Header QR Code-->
                             <div class="header__qr">
-                                <img src="../assets/img/QR_code.png" alt="QR_code" class="header__qr-img">
+                                <img src="../public/assets/img/QR_code.png" alt="QR_code" class="header__qr-img">
                                 <div class="header__qr-apps">
                                     <a href="https://play.google.com/store/books?hl=vi&gl=US" class="header__qr-link">
-                                        <img src="../assets/img/GooglePlay.png" alt="Google GooglePlay"
+                                        <img src="../public/assets/img/GooglePlay.png" alt="Google GooglePlay"
                                             class="header__qr-download-img">
                                     </a>
                                     <a href="https://www.apple.com/app-store/" class="header__qr-link">
-                                        <img src="../assets/img/Appstore.png" alt="Appstore"
+                                        <img src="../public/assets/img/Appstore.png" alt="Appstore"
                                             class="header__qr-download-img">
                                     </a>
                                 </div>
@@ -78,7 +88,7 @@
                                 <ul class="header__notify-list">
                                     <li class="header__notify-item header__notify-item--viewed">
                                         <a href="" class="header__notify-link">
-                                            <img src="../assets/img/onstask_img.webp" alt="Ảnh Onstack"
+                                            <img src="../public/assets/img/onstask_img.webp" alt="Ảnh Onstack"
                                                 class="header__notify-img">
                                             <div class="header__notify-info">
                                                 <span class="header__notify-name">
@@ -92,7 +102,7 @@
                                     </li>
                                     <li class="header__notify-item header__notify-item--viewed">
                                         <a href="" class="header__notify-link">
-                                            <img src="../assets/img/bo_sgk10.jpg" alt="Ảnh SGK-10"
+                                            <img src="../public/assets/img/bo_sgk10.jpg" alt="Ảnh SGK-10"
                                                 class="header__notify-img">
                                             <div class="header__notify-info">
                                                 <span class="header__notify-name">
@@ -106,7 +116,7 @@
                                     </li>
                                     <li class="header__notify-item">
                                         <a href="" class="header__notify-link">
-                                            <img src="../assets/img/con-chim-xanh-biec-bay.jpg"
+                                            <img src="../public/assets/img/con-chim-xanh-biec-bay.jpg"
                                                 alt="Ảnh  sách Con chim xanh" class="header__notify-img">
                                             <div class="header__notify-info">
                                                 <span class="header__notify-name">
@@ -135,16 +145,12 @@
                         </li>
                         <li
                             class="header__navbar-item header__navbar-item--strong js-register-btn header__navbar-item--separate">
-                            <a href="../../public/login.php">Đăng ký</a> 
+                            <a href="../public/login.php" class="header__navbar-icon-link">Đăng nhập</a>
                         </li>
-                        <li href="../../public/login.php"
-                            class="header__navbar-item header__navbar-item--strong js-register-btn header__navbar-item--separate">
-                            Đăng ký
+                        <li class="header__navbar-item header__navbar-item--strong js-register-btn">
+                            <a href="../public/login.php" class="header__navbar-icon-link">Đăng ký</a>
                         </li>
-                        <li class="header__navbar-item header__navbar-item--strong js-login-btn">Đăng nhập</li>
                     </ul>
-                    
-
                 </nav>
 
                 <!-- Header-with-search -->
@@ -208,7 +214,7 @@
 
                     <div class="header__logo hide-on-tablet">
                         <a href="index.php" class="header__logo-link">
-                            <img src="../assets/img/logo.png" class="header__logo-img">
+                            <img src="../public/assets/img/logo.png" class="header__logo-img">
 
                             </img>
                         </a>
@@ -219,42 +225,45 @@
                     <div class="header__search ">
                         <!-- hide-on-mobile -->
                         <div class="header__search-input-wrap">
-                            <input type="text" class="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm">
+                            <form action="" method="post">
+                                <input type="text" class="header__search-input" name="search"
+                                    placeholder="Nhập để tìm kiếm sản phẩm">
 
 
-                            <!-- Search history -->
-                            <div class="header__search-history">
-                                <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
-                                <ul class="header__search-history-list">
-                                    <li class="header__search-history-item">
-                                        <a href="index.php?pg=sgk">Sách giáo khoa 10</a>
-                                    </li>
-                                    <li class="header__search-history-item">
-                                        <a href="index.php?pg=khoahoc">Sách khoa học</a>
-                                    </li>
-                                    <li class="header__search-history-item">
-                                        <a href="index.php?pg=tieuthuyet">Tiểu thuyết, truyện tranh</a>
-                                    </li>
-                                </ul>
-                            </div>
+                                <!-- Search history -->
+                                <div class="header__search-history">
+                                    <h3 class="header__search-history-heading">Lịch sử tìm kiếm</h3>
+                                    <ul class="header__search-history-list">
+                                        <li class="header__search-history-item">
+                                            <a href="index.php?pg=sgk">Sách giáo khoa 10</a>
+                                        </li>
+                                        <li class="header__search-history-item">
+                                            <a href="index.php?pg=khoahoc">Sách khoa học</a>
+                                        </li>
+                                        <li class="header__search-history-item">
+                                            <a href="index.php?pg=tieuthuyet">Tiểu thuyết, truyện tranh</a>
+                                        </li>
+                                    </ul>
+                                </div>
                         </div>
 
 
 
-                        <button class="header__search-btn">
+                        <button class="header__search-btn" type="submit">
                             <i class="header__search-btn-icon fas fa-search"></i>
                         </button>
+                        </form>
                     </div>
 
                     <!-- Cart layout -->
                     <div class="header__cart">
                         <div class="header__cart-wrap">
                             <i class=" header__cart-icon fas fa-shopping-cart"></i>
-                            <span class="header__cart-notice">3</span>
 
                             <!-- No cart:  header_cart-list--no-cart -->
                             <div class="header__cart-list  ">
-                            <img src="../assets/img/no_cart.png" alt="img Cart" class="header__cart-no-cart-img">
+                                <img src="../public/assets/img/no_cart.png" alt="img Cart"
+                                    class="header__cart-no-cart-img">
                                 <span class="header__cart-list-no-cart-msg">
                                     <strong>Chưa có sản phẩm</strong>
                                 </span>
