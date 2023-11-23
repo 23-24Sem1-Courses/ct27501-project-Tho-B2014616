@@ -209,6 +209,13 @@ html {
     font-size: 1.4rem;
     display: block;
     padding: 4px 0;
+    border: none;
+    background: initial;
+    cursor: pointer;
+}
+
+.select-input__link--active {
+    color: var(--primary-color);
 }
 
 .select-input__link:hover {
