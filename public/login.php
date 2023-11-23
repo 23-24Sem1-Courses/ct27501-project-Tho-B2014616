@@ -1,8 +1,7 @@
 <?php
   require_once __DIR__ . '/../src/bootstrap.php';
-  require_once __DIR__ . '/../src/classes/user.php';
   $pdo = connect_db();
-  $user = new user($pdo);
+  $user = new APP\user($pdo);
   if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] == 'signin') {
     $name = $_POST['username'];
     $password = $_POST['password'];
