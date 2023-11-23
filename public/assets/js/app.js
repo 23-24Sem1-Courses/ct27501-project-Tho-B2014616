@@ -1,23 +1,19 @@
-const sign_in_btn = document.querySelector("#sign-in-btn");
-const sign_up_btn = document.querySelector("#sign-up-btn");
-const container = document.querySelector(".container");
+$(document).ready(function(){
+    const signUpForm = $('.sign-up-form');
 
-sign_up_btn.addEventListener('click', () =>{
-    container.classList.add("sign-up-mode");
-});
+    $('#sign-up-btn').on('click', function(){
+        $('.container').addClass('sign-up-mode');
+    });
 
-sign_in_btn.addEventListener('click', () =>{
-    container.classList.remove("sign-up-mode");
-});
-document.addEventListener('DOMContentLoaded', function () {
-    const signUpForm = document.querySelector('.sign-up-form');
-    signUpForm.addEventListener('submit', function (event) {
-        // Ngăn chặn việc gửi biểu mẫu mặc định
+    $('#sign-in-btn').on('click', function(){
+        $('.container').removeClass('sign-up-mode');
+    });
+
+    signUpForm.on('submit', function(event){
         event.preventDefault();
 
-        // Kiểm tra xem mật khẩu và mật khẩu lặp lại có giống nhau hay không
-        const password = document.getElementById('password').value;
-        const confirmPassword = document.getElementById('confirmPassword').value;
+        const password = $('#password').val();
+        const confirmPassword = $('#confirmPassword').val();
 
         if (password !== confirmPassword) {
             alert('Mật khẩu và mật khẩu lặp lại không khớp. Vui lòng thử lại.');

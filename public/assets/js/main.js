@@ -31,109 +31,6 @@ for (var i = 0; i < mobileSelecItems.length; i++) {
 }
 
 
-/* Form resgister / Login */
-const modal = $('.modal');
-const regisBtn = $('.js-register-btn');
-const loginBtn = $('.js-login-btn');
-const authFormRegis = $('.auth-form-register');
-const authoFormLogin = $('.auth-form-login');
-const modalOverlay = $('.modal__overlay');
-const backAuthoForms = $$('.auth-form__controls-back');
-const closeAuthForms = $$('.auth-form__close-btn');
-
-
-function regisClick() {
-    regisBtn.onclick = function() {
-
-        authFormRegis.classList.add('open');
-        modalOverlay.classList.add('open');
-        authoFormLogin.classList.remove('open');
-        modal.classList.add('fixed');
-
-    }
-}
-
-
-function loginClick() {
-    loginBtn.onclick = function() {
-
-        authoFormLogin.classList.add('open');
-        modalOverlay.classList.add('open');
-        authFormRegis.classList.remove('open');
-        modal.classList.add('fixed');
-    }
-}
-
-function removeOpenFromModal() {
-    authFormRegis.classList.remove('open');
-    modalOverlay.classList.remove('open');
-    authoFormLogin.classList.remove('open');
-    modal.classList.remove('fixed');
-
-}
-
-
-regisClick();
-loginClick();
-modalOverlay.onclick = removeOpenFromModal;
-
-
-for (let i = 0; i < backAuthoForms.length; i++) {
-    let backAuthoForm = backAuthoForms[i];
-    backAuthoForm.onclick = function() {
-        removeOpenFromModal();
-    }
-}
-for (let i = 0; i < closeAuthForms.length; i++) {
-    let closeAuthForm = closeAuthForms[i];
-    closeAuthForm.onclick = function() {
-        removeOpenFromModal();
-    }
-}
-
-
-// Hangle "Enter" in regis/login
-const submitLoginForm = document.getElementById('login-form');
-console.log(submitLoginForm)
-document.getElementById('login-form').addEventListener('keydown', function(event) {
-    if (event.keyCode === 13) {
-        event.preventDefault(); // Ngăn chặn hành động mặc định của phím "Enter" (ví dụ: ngăn chặn việc thêm dòng mới trong textarea)
-        document.getElementById("login-form").submit(); // Submit form
-    }
-});
-
-
-
-
-
-
-
-
-// Caterogy
-// caterory-item--active
-var cateroryItems = $$('.caterory-item');
-
-for (let i = 0; i < cateroryItems.length; i++) {
-
-    cateroryItems[i].addEventListener('click', function() {
-        this.classList.add('caterory-item--active');
-    })
-}
-
-
-
-
-
-
-/* Cart add*/
-
-// Xử lý sự kiện nút giảm
-
-//
-
-var products = document.querySelectorAll('.cart__table-thead-tr');
-
-
 
 
 
@@ -173,4 +70,49 @@ $(".auth-form-register").addEventListener("submit", function(event) {
     } else {
         alert("Vui lòng điền đầy đủ thông tin");
     }
+});
+document.addEventListener("DOMContentLoaded", function () {
+    // Hiển thị modal khi ấn vào nút "Thêm vào giỏ hàng"
+    document.querySelectorAll(".home-product-item__cart-order").forEach(function (btn) {
+        btn.addEventListener("click", function (event) {
+            event.preventDefault();
+            document.getElementById("myModal").style.display = "flex";
+        });
+    });
+
+    // Đóng modal khi ấn vào nút đóng hoặc nút "×"
+    document.querySelector(".close").addEventListener("click", function () {
+        document.getElementById("myModal").style.display = "none";
+    });
+
+    // Đóng modal khi click bên ngoài modal
+    window.addEventListener("click", function (event) {
+        if (event.target == document.getElementById("myModal")) {
+            document.getElementById("myModal").style.display = "none";
+        }
+    });
+});
+document.addEventListener("DOMContentLoaded", function () {
+    // Hiển thị modal khi ấn vào nút "Thêm vào giỏ hàng"
+    document.querySelectorAll(".home-product-item__cart-order").forEach(function (btn) {
+        btn.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Lấy giá trị từ các thẻ input
+            var productId = this.parentElement.querySelector('input[name="id"]').value;
+            var productName = this.parentElement.querySelector('input[name="name"]').value;
+            var productImg = this.parentElement.querySelector('input[name="img"]').value;
+            var productPrice = this.parentElement.querySelector('input[name="price"]').value;
+
+            // Hiển thị giá trị trong modal
+            document.getElementById("modalProductId").value = productId;
+            document.getElementById("modalProductName").value = productName;
+            document.getElementById("modalProductImg").value = productImg;
+            document.getElementById("modalProductPrice").value = productPrice;
+
+            document.getElementById("myModal").style.display = "block";
+        });
+    });
+
+    // Các đoạn mã khác giữ nguyên
 });
