@@ -9,8 +9,9 @@
     $success = $user ->check_user_name($name,$password);
     if ($success == true){
       $_SESSION['user_name'] = $name;
-      if ($user->check_admin($name)){echo'<script>alert("Đăng nhập với quyền admin.");</script>';header('location: index.php');exit();}
+      if ($user->check_admin($name)){header('location: admin.php');exit();}
       header('location: index.php');
+      exit();
     }
     else {echo '<script>alert("Tên đăng nhập hoặc mật khẩu không đúng.");</script>';}
   }
@@ -32,8 +33,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SignIn&SignUp</title>
+    <title>TN - shop</title>
     <link rel="stylesheet" type="text/css" href="./assets/css/login.css" />
+    <link rel="icon" href="./assets/img/books.png" type="image/x-icon">
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
@@ -136,7 +138,7 @@
         </div>
       </div>
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="./assets/js/app.js"></script>
   </body>
 </html>
